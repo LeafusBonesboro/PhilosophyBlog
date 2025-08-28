@@ -1,0 +1,18 @@
+<!-- templates/select_league.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Select Your 2024 Football League</h2>
+<form method="POST" action="{{ url_for('leagues.choose_league') }}">
+
+    {% for league in leagues %}
+        <label>
+            <input type="radio" name="league" value="{{ league['league_key'] }}" required>
+            {{ league['name'] }} ({{ league['season'] }})
+        </label><br>
+    {% endfor %}
+    <button type="submit" class="button">Select League</button>
+</form>
+
+
+{% endblock %}

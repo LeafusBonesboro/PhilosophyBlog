@@ -1,0 +1,17 @@
+<!-- templates/choose_league.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Selected League Details</h2>
+<p>You selected league: {{ league_name }}</p>
+<p>League URL: <a href="{{ league_url }}" target="_blank">{{ league_url }}</a></p>
+<a href="{{ url_for('leagues.select_league') }}" class="button">Back to Leagues</a>
+
+
+
+
+
+
+
+
+{% endblock %}

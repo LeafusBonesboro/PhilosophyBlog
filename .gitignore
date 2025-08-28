@@ -1,0 +1,16 @@
+# Ignore virtual environments
+backend/FFapi_env/
+
+# Ignore Python bytecode
+*.pyc
+__pycache__/
+
+# Ignore logs
+*.log
+
+# Ignore build files for React frontend
+frontend/build/
+frontend/dist/
+
+# Ignore node_modules for React frontend
+frontend/node_modules/
