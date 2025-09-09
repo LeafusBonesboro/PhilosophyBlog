@@ -28,22 +28,13 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to the Fantasy Sports App</h1>
-         <!-- Add your refresh token button here -->
-    <form action="{{ url_for('auth.refresh_token') }}" method="get">
-        <button type="submit">Refresh Token</button>
-    </form>
+        <h1>Welcome</h1>
 
-    <form action="{{ url_for('auth.login') }}" method="get">
-        <button type="submit">Login</button>
-    </form>
-    
-    
-
+        <!-- Placeholder for React Auth UI -->
+        <div id="auth-root"></div>
     </header>
     <main>
         {% block content %}{% endblock %}
-
     </main>
 </body>
 </html>

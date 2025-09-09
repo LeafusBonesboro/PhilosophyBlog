@@ -1,5 +1,7 @@
 # Ignore virtual environments
-backend/FFapi_env/
+# Python venv
+backend/deltatreats_env/
+
 
 # Ignore Python bytecode
 *.pyc

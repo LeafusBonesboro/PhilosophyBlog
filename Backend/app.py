@@ -1,38 +1,27 @@
-from flask import render_template, Flask
 import os
 import secrets
-from routes.auth import auth_bp
-from routes.leagues import leagues_bp
-from routes.teams import teams_bp
 from config import app, db
-
 from routes.local_auth import local_auth_bp
+from flask_cors import CORS
 
-
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-
-generated_secret_key = secrets.token_hex(24)  # Generates a random 24-byte hexadecimal string
-
-
-
-# Use a persistent secret key (preferably from environment variable)
-#app.secret_key = os.getenv('FLASK_SECRET_KEY', 'a_fixed_secret_key_here')
-# Use a persistent secret key (preferably from environment variable)
-app.secret_key = os.getenv('FLASK_SECRET_KEY', 'a_fixed_secret_key_here')
+# Enable CORS so React (on a different port) can talk to Flask
+CORS(app, supports_credentials=True)
 
 # Register Blueprints
-app.register_blueprint(auth_bp, url_prefix='/auth')  # Add the /auth pre
-app.register_blueprint(leagues_bp)
-app.register_blueprint(teams_bp, url_prefix='/teams')  # Add a prefix for API routes
-app.register_blueprint(local_auth_bp, url_prefix='/local_auth')
+app.register_blueprint(local_auth_bp, url_prefix="/local_auth")
 
-@app.route('/')
+# Secret key: use env var if available, otherwise generate one (not great for production sessions)
+app.secret_key = os.getenv("FLASK_SECRET_KEY", secrets.token_hex(24))
+
+# API-only root route
+@app.route("/")
 def home():
-    return render_template('base.html')
+    return {"status": "ok", "message": "API running!"}
 
-if __name__ == '__main__':
+# Entrypoint
+if __name__ == "__main__":
     with app.app_context():
         db.create_all()  # Create tables if they don't exist
 
-    app.run(debug=True)
-# .\ngrok http 5000
+    port = int(os.environ.get("PORT", 5000))  # Render assigns $PORT in prod
+    app.run(host="0.0.0.0", port=port)

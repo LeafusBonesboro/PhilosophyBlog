@@ -1,8 +1,9 @@
-// src/components/Login.jsx
+// src/components/Register.jsx
 import { useState } from "react";
 
-export default function Login({ open, onClose, onSwitchToRegister }) {
+export default function Register({ open, onClose, onSwitchToLogin }) {
   const [formData, setFormData] = useState({
+    username: "",
     email: "",
     password: "",
   });
@@ -18,7 +19,7 @@ export default function Login({ open, onClose, onSwitchToRegister }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Logging in:", formData);
+    console.log("Registering user:", formData);
     onClose();
   };
 
@@ -34,10 +35,19 @@ export default function Login({ open, onClose, onSwitchToRegister }) {
         </button>
 
         {/* Title */}
-        <h2 className="text-2xl font-bold mb-4 text-center">Welcome Back</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">Create an Account</h2>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-orange-400"
+            required
+          />
           <input
             type="email"
             name="email"
@@ -61,18 +71,18 @@ export default function Login({ open, onClose, onSwitchToRegister }) {
             type="submit"
             className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded font-semibold"
           >
-            Log In
+            Register
           </button>
         </form>
 
-        {/* Switch to Register */}
+        {/* Switch to Login */}
         <p className="text-sm text-gray-600 mt-4 text-center">
-          Don’t have an account?{" "}
+          Already have an account?{" "}
           <button
-            onClick={onSwitchToRegister}
+            onClick={onSwitchToLogin}
             className="text-orange-500 hover:underline"
           >
-            Sign up
+            Log in
           </button>
         </p>
       </div>
