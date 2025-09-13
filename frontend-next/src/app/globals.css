@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+@tailwindcss base;
+@tailwindcss components;
+@tailwindcss utilities;
+
+/* Base reset */
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+  font-family: 'Source Sans 3', sans-serif;
+  background-color: transparent; /* ✅ Start fully transparent */
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.app {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh; /* app fills screen */
+  /* ❌ no background here – let pages/topbar control it */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* General resets */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+button {
+  margin: 5px;
+  padding: 5px;
+}
+
+label {
+  font-size: 20px;
+}
+
+input {
+  font-size: 18px;
+  margin-left: 5px;
 }

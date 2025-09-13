@@ -1,18 +1,35 @@
-# Ignore virtual environments
-# Python venv
-backend/deltatreats_env/
+# ==============================
+# Node.js / Next.js
+# ==============================
+node_modules/
+.next/
+out/
 
+# ==============================
+# Environment files
+# ==============================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Ignore Python bytecode
-*.pyc
-__pycache__/
+# ==============================
+# Logs
+# ==============================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Ignore logs
-*.log
+# ==============================
+# Prisma
+# ==============================
+/frontend-next/prisma/*.db
+/frontend-next/prisma/migrations/dev.db
 
-# Ignore build files for React frontend
-frontend/build/
-frontend/dist/
-
-# Ignore node_modules for React frontend
-frontend/node_modules/
+# ==============================
+# OS files
+# ==============================
+.DS_Store
+Thumbs.db
