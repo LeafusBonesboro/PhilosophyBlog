@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useCart } from "@/context/CartContext"; 
-import { useAuth } from "@/context/AuthContext";
+import { useCart } from "../context/CartContext"; 
+import { useAuth } from "../context/AuthContext";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 

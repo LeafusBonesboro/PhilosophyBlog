@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Providers } from "./providers";
 import Topbar from "@/components/Topbar";
-import { AuthProvider } from "@/context/AuthContext";
+import { AuthProvider } from "../context/AuthContext";
 
 export const metadata = {
   title: "Delta Treats",

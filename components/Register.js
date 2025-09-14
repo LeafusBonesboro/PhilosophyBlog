@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
-export default function Login({ open, onClose, onSwitchToRegister }) {
+export default function Register({ open, onClose, onSwitchToLogin }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
   const [error, setError] = useState("");
-  const { login } = useAuth(); // 👈 use login from context
+  const { login } = useAuth(); // 👈 use AuthContext
 
   if (!open) return null;
 
@@ -25,7 +25,7 @@ export default function Login({ open, onClose, onSwitchToRegister }) {
     setError("");
 
     try {
-      const res = await fetch("/auth/login", {
+      const res = await fetch("/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -34,21 +34,20 @@ export default function Login({ open, onClose, onSwitchToRegister }) {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Login failed");
+        setError(data.error || "Registration failed");
         return;
       }
 
-      // ✅ Successful login
-      login({ username: data.username }); // set user in context
+      // ✅ Registration successful → log them in immediately
+      login({ username: formData.username });
       onClose();
 
-      // 👇 Optional toast/alert
       setTimeout(() => {
-        alert(`🎉 Welcome back, ${data.username}!`);
+        alert(`🎉 Welcome, ${formData.username}! Your account has been created.`);
       }, 200);
 
     } catch (err) {
-      console.error("Login error:", err);
+      console.error("Registration error:", err);
       setError("Something went wrong. Try again.");
     }
   };
@@ -65,14 +64,14 @@ export default function Login({ open, onClose, onSwitchToRegister }) {
         </button>
 
         {/* Title */}
-        <h2 className="text-2xl font-bold mb-4 text-center">Welcome Back</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">Create Account</h2>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="Choose a username"
             value={formData.username}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-orange-400"
@@ -81,7 +80,7 @@ export default function Login({ open, onClose, onSwitchToRegister }) {
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Create a password"
             value={formData.password}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-orange-400"
@@ -94,18 +93,18 @@ export default function Login({ open, onClose, onSwitchToRegister }) {
             type="submit"
             className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded font-semibold"
           >
-            Log In
+            Sign Up
           </button>
         </form>
 
-        {/* Switch to Register */}
+        {/* Switch to Login */}
         <p className="text-sm text-gray-600 mt-4 text-center">
-          Don’t have an account?{" "}
+          Already have an account?{" "}
           <button
-            onClick={onSwitchToRegister}
+            onClick={onSwitchToLogin}
             className="text-orange-500 hover:underline"
           >
-            Sign up
+            Log in
           </button>
         </p>
       </div>

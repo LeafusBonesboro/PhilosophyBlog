@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  // no need for experimental.appDir anymore
+  reactStrictMode: true,
 };
 
 export default nextConfig;
