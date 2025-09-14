@@ -6,6 +6,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
+import Image from "next/image";
+
 
 export default function LandingPage() {
   return (
@@ -110,24 +112,27 @@ export default function LandingPage() {
             { src: "/images/Brownie1.jpg", title: "Brownies", href: "/brownies" },
             { src: "/images/gummies1.jpg", title: "Gummies", href: "/gummies" },
           ].map((cat, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="relative h-[800px] rounded-lg overflow-hidden shadow-lg group">
-                <img
-                  src={cat.src}
-                  alt={cat.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-white">
-                  <h3 className="text-2xl font-bold">{cat.title}</h3>
-                  <Link
-                    href={cat.href}
-                    className="mt-4 bg-white text-black px-5 py-2 rounded shadow hover:bg-gray-100"
-                  >
-                    Shop Now
-                  </Link>
-                </div>
-              </div>
-            </SwiperSlide>
+           <SwiperSlide key={idx}>
+  <div className="relative h-[800px] rounded-lg overflow-hidden shadow-lg group">
+    <Image
+      src={cat.src}
+      alt={cat.title}
+      width={600}
+      height={800}
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 text-white">
+      <h3 className="text-2xl font-bold">{cat.title}</h3>
+      <Link
+        href={cat.href}
+        className="mt-4 bg-white text-black px-5 py-2 rounded shadow hover:bg-gray-100"
+      >
+        Shop Now
+      </Link>
+    </div>
+  </div>
+</SwiperSlide>
+
           ))}
         </Swiper>
       </section>
@@ -157,17 +162,20 @@ export default function LandingPage() {
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="rounded-lg w-full h-60 object-cover"
-                />
-                <h3 className="mt-4 font-semibold">{item.title}</h3>
-                {item.old && (
-                  <p className="line-through text-gray-400">{item.old}</p>
-                )}
-                <p className="text-orange-600">{item.price}</p>
-              </div>
+  <Image
+    src={item.src}
+    alt={item.title}
+    width={400}
+    height={240}
+    className="rounded-lg w-full h-60 object-cover"
+  />
+  <h3 className="mt-4 font-semibold">{item.title}</h3>
+  {item.old && (
+    <p className="line-through text-gray-400">{item.old}</p>
+  )}
+  <p className="text-orange-600">{item.price}</p>
+</div>
+
             ))}
           </div>
         </div>
@@ -184,14 +192,17 @@ export default function LandingPage() {
               { src: "/images/Crispy.jpg", title: "Peanut Butter Cookie", price: "$3.25" },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="rounded-lg w-full h-60 object-cover"
-                />
-                <h3 className="mt-4 font-semibold">{item.title}</h3>
-                <p className="text-orange-600">{item.price}</p>
-              </div>
+  <Image
+    src={item.src}
+    alt={item.title}
+    width={400}
+    height={240}
+    className="rounded-lg w-full h-60 object-cover"
+  />
+  <h3 className="mt-4 font-semibold">{item.title}</h3>
+  <p className="text-orange-600">{item.price}</p>
+</div>
+
             ))}
           </div>
         </div>
