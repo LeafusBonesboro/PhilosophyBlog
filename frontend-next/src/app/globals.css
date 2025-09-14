@@ -44,3 +44,15 @@ input {
   font-size: 18px;
   margin-left: 5px;
 }
+@keyframes kenburns {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 15s ease-in-out infinite alternate;
+}

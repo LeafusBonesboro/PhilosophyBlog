@@ -1,19 +1,20 @@
-// src/pages/CupcakesPage.jsx
-export default function CupcakesPage() {
+import Image from "next/image";
+
+export default function BrowniesPage() {
   const cupcakes = [
     {
-      src: "/images/choc-cupcake.jpg",
+      src: "/images/Gummies.png",
       title: "Chocolate Fudge Cupcake",
       price: "$3.38",
       old: "$4.50",
     },
     {
-      src: "/images/red-velvet.jpg",
+      src: "/images/Gummies.png",
       title: "Red Velvet Cupcake",
       price: "$4.75",
     },
     {
-      src: "/images/vanilla.jpg",
+      src: "/images/Gummies.png",
       title: "Vanilla Bean Cupcake",
       price: "$3.00",
       old: "$4.00",
@@ -61,9 +62,11 @@ export default function CupcakesPage() {
           {cupcakes.map((item, idx) => (
             <div key={idx} className="group">
               <div className="relative overflow-hidden rounded-lg shadow-md">
-                <img
+                <Image
                   src={item.src}
                   alt={item.title}
+                  width={400}
+                  height={288} // ~16:9 ratio for h-72
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 {item.old && (

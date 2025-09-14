@@ -11,7 +11,7 @@ export default function LandingPage() {
   return (
     <div className="w-full">
       {/* Hero Carousel */}
-      <section className="relative w-full h-screen">
+      <section className="relative w-full h-screen overflow-hidden">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -58,31 +58,42 @@ export default function LandingPage() {
             },
           ].map((slide, idx) => (
             <SwiperSlide key={idx}>
-              <div
-                className="w-full h-full bg-cover bg-center flex items-center"
-                style={{ backgroundImage: `url(${slide.src})` }}
-              >
-                <div className="text-left px-12 max-w-2xl">
-                  <h1 className="text-4xl md:text-6xl text-white font-bold leading-tight">
-                    {slide.title}
-                  </h1>
-                  <p className="text-white mt-4">{slide.desc}</p>
-                  <Link
-                    href={slide.href}
-                    className="mt-6 inline-block px-6 py-3 bg-white text-black rounded-md font-semibold hover:bg-gray-200"
-                  >
-                    {slide.button}
-                  </Link>
-                </div>
-              </div>
-            </SwiperSlide>
+  {({ isActive }) => (
+    <div className="relative w-full h-full overflow-hidden">
+      <div
+        className={`absolute inset-0 bg-center bg-cover transition-transform duration-[6000ms] ease-out ${
+          isActive ? "scale-110" : "scale-100"
+        }`}
+        style={{ backgroundImage: `url(${slide.src})` }}
+      />
+      <div className="relative z-10 flex items-center h-full px-12 max-w-2xl">
+        <div>
+          <h1 className="text-4xl md:text-6xl text-white font-bold leading-tight">
+            {slide.title}
+          </h1>
+          <p className="text-white mt-4">{slide.desc}</p>
+          <Link
+            href={slide.href}
+            className="mt-6 inline-block px-6 py-3 bg-white text-black rounded-md font-semibold hover:bg-gray-200"
+          >
+            {slide.button}
+          </Link>
+        </div>
+      </div>
+    </div>
+  )}
+</SwiperSlide>
+
+
           ))}
         </Swiper>
       </section>
 
       {/* Categories */}
       <section className="bg-white py-16">
-        <h2 className="text-2xl font-bold text-center mb-12">Explore Our Categories</h2>
+        <h2 className="text-2xl font-bold text-center mb-12">
+          Explore Our Categories
+        </h2>
         <Swiper
           modules={[Pagination, Navigation, Autoplay]}
           spaceBetween={20}
@@ -120,6 +131,7 @@ export default function LandingPage() {
           ))}
         </Swiper>
       </section>
+
       {/* Holiday Delights */}
       <section className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-4">
@@ -127,19 +139,19 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                src: "/images/brownie.jpg",
+                src: "/images/Brownie1.jpg",
                 title: "Classic Fudge Brownie",
                 price: "$3.38",
                 old: "$4.50",
               },
               {
-                src: "/images/cookie.jpg",
+                src: "/images/Brownies.png",
                 title: "Oatmeal Raisin Cookie",
                 price: "$2.00",
                 old: "$3.00",
               },
               {
-                src: "/images/cupcake.jpg",
+                src: "/images/cupcakes.jpg",
                 title: "Red Velvet Cupcake",
                 price: "$4.75",
               },
@@ -167,9 +179,9 @@ export default function LandingPage() {
           <h2 className="text-2xl font-bold mb-6">Gourmet Treats</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { src: "/images/walnut.jpg", title: "Walnut Brownie", price: "$5.00" },
-              { src: "/images/brownie.jpg", title: "Classic Fudge Brownie", price: "$3.38" },
-              { src: "/images/peanut.jpg", title: "Peanut Butter Cookie", price: "$3.25" },
+              { src: "/images/seasonal.jpg", title: "Walnut Brownie", price: "$5.00" },
+              { src: "/images/Brownies.png", title: "Classic Fudge Brownie", price: "$3.38" },
+              { src: "/images/Crispy.jpg", title: "Peanut Butter Cookie", price: "$3.25" },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
                 <img
@@ -186,21 +198,28 @@ export default function LandingPage() {
       </section>
 
       {/* Seasonal Offers */}
-      <section
-        className="relative bg-cover bg-center py-32 text-white"
-        style={{ backgroundImage: "url('/images/seasonal-banner.jpg')" }}
-      >
-        <div className="bg-black/50 p-8 rounded max-w-xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Exclusive Seasonal Offers</h2>
-          <p className="mb-6">
-            Indulge in our limited-time offers on gourmet cupcakes, artisanal
-            cookies, and decadent brownies. Treat yourself today!
-          </p>
-          <button className="px-6 py-3 bg-orange-500 rounded font-semibold hover:bg-orange-600">
-            Shop Now for Deals
-          </button>
-        </div>
-      </section>
+      <section className="relative overflow-hidden py-32 text-white">
+  {/* Background with zoom effect */}
+  <div
+    className="absolute inset-0 bg-center bg-cover animate-kenburns"
+    style={{ backgroundImage: "url('/images/seasonal-banner.jpg')" }}
+  ></div>
+
+  {/* Overlay content */}
+  <div className="relative max-w-2xl mx-auto text-center px-4">
+    <h2 className="text-4xl md:text-5xl font-bold drop-shadow-md mb-4">
+      Exclusive Seasonal Offers
+    </h2>
+    <p className="text-lg md:text-xl mb-6 drop-shadow-md">
+      Indulge in our limited-time offers on gourmet cupcakes, artisanal
+      cookies, and decadent brownies. Treat yourself today!
+    </p>
+    <button className="px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-black transition">
+      Shop Now for Deals
+    </button>
+  </div>
+</section>
+
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 px-6">
@@ -249,4 +268,18 @@ export default function LandingPage() {
     </div>
   );
 }
-    
+
+/* Ken Burns animation */
+<style jsx global>{`
+  @keyframes kenburns {
+    0% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .animate-kenburns {
+    animation: kenburns 20s ease-in-out infinite alternate;
+  }
+`}</style>
