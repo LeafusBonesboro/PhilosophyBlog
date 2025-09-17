@@ -1,18 +1,23 @@
-import "./globals.css";
-import Topbar from "@/components/Topbar";
-
-export const metadata = {
-  title: "Philosophy Blog",
-  description: "Weekly quote deep dives and niche takes on philosophy",
-};
+import Script from "next/script"
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <Topbar />
-        <main className="pt-20">{children}</main>
-      </body>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-RWVXF2XV75"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-script" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RWVXF2XV75');
+          `}
+        </Script>
+      </head>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
