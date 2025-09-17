@@ -1,4 +1,11 @@
-import Script from "next/script"
+import "./globals.css";
+import Topbar from "@/components/Topbar";
+import Script from "next/script";
+
+export const metadata = {
+  title: "Philosophy Blog",
+  description: "Weekly quote deep dives and niche takes on philosophy",
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -17,7 +24,10 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body>{children}</body>
+      <body className="bg-white text-black">
+        <Topbar />
+        <main className="pt-20">{children}</main>
+      </body>
     </html>
-  )
+  );
 }
