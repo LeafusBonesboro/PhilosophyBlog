@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-RWVXF2XV75"
+          src="https://www.googletagmanager.com/gtag/js?id=G-MNQTVCEF9M"
           strategy="afterInteractive"
         />
         <Script id="ga-script" strategy="afterInteractive">
