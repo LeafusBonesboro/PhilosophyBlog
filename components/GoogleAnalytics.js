@@ -6,10 +6,10 @@ export default function GoogleAnalytics() {
   return (
     <>
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-RVVXF2XV75"
+        src="https://www.googletagmanager.com/gtag/js?id=G-MNQTVCEF9M"
         strategy="afterInteractive"
       />
-      <Script id="ga-script" strategy="afterInteractive">
+      <Script id="ga-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
