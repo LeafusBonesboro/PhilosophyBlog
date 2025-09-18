@@ -16,11 +16,17 @@ export default function Topbar() {
           <Link href="/blog" className="hover:text-orange-400 transition">
             Blog
           </Link>
+          <Link href="/tags" className="hover:text-orange-400 transition">
+            Tags
+          </Link>
+          <Link href="/concepts" className="hover:text-orange-400 transition">
+            Concepts
+          </Link>
+          <Link href="/philosophers" className="hover:text-orange-400 transition">
+            Philosophers
+          </Link>
           <Link href="/about" className="hover:text-orange-400 transition">
             About
-          </Link>
-          <Link href="/contact" className="hover:text-orange-400 transition">
-            Contact
           </Link>
         </div>
       </div>

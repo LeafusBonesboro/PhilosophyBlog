@@ -3,6 +3,10 @@ title: "Is the Earth Just a Projection? Kant, Holography, and the Boundaries of 
 date: 2025-09-17
 excerpt: "What if the Earth we see isn’t the Earth at all—but a structured projection shaped by the mind itself? Kant, the Holographic Principle, and some modern metaphysics offer a wild but surprisingly grounded explanation."
 tags: [philosophy, cosmology, Kant, holography, metaphysics, space-time]
+
+concepts: [space, time, noumenon, phenomenon, holographic principle, cognition, projection]
+philosophers: [Immanuel Kant]
+scientists: [Gerard 't Hooft, Leonard Susskind, Juan Maldacena]
 ---
 
 
